@@ -254,14 +254,15 @@ const DAYS = [
    ],
    Afternoon:[
     {t:'12:45', h:'Mud pool', s:'free', dur:'15 min', p:'Two minutes down the road. A big pool of grey mud plopping and burping. Free, roadside.', map:'Waiotapu Mud Pools'},
-    {t:'13:00', h:'Drive to Hobbiton', dur:'~1.5 hrs', p:'With a quick lunch on the way.'},
-    {t:'15:00', h:'Hobbiton Movie Set', s:'book', dur:'2.5 hrs', cost:[130,null,'Signature Tour, adult'],
+    {t:'13:30', h:'Lunch back in town', dur:'~1 hr'},
+    {t:'14:45', h:'Drive to Hobbiton', dur:'~55 min'},
+    {t:'16:00', h:'Hobbiton Movie Set', s:'booked', dur:'2.5 hrs', cost:[130,null,'Signature Tour, adult'],
      p:'Guided walk through the hobbit holes, Bag End and the party field, finishing with a drink at the Green Dragon Inn.',
-     f:{'Check in':'The Shire\'s Rest by 2:40pm', Book:'hobbitontours.com, sells out November to April'}, map:'The Shire\'s Rest Hobbiton'},
-    {t:'17:30', h:'Drive back to Rotorua', dur:'~55 min'}
+     f:{'Check in':'The Shire\'s Rest by 3:40pm'}, map:'The Shire\'s Rest Hobbiton'},
+    {t:'18:30', h:'Drive back to Rotorua', dur:'~55 min'}
    ],
    Evening:[
-    {t:'18:30', h:'Rotorua Night Market', s:'free', dur:'5 to 9pm', p:'Thursday nights only, so this is the one shot. Food trucks and stalls in the middle of Tutanekai Street. Dinner sorted.', f:{Note:'Weather permitting'}, map:'Tutanekai Street Rotorua'}
+    {t:'19:30', h:'Rotorua Night Market', s:'free', dur:'Until 9pm', p:'Thursday nights only, so this is the one shot. Food trucks and stalls in the middle of Tutanekai Street. Dinner sorted.', f:{Note:'Weather permitting'}, map:'Tutanekai Street Rotorua'}
    ]}},
 
  {n:3, date:'Fri 4 Dec', short:'Gardens + luge', title:'Gardens, the luge and the farm', base:'Rotorua', mode:'car',
@@ -336,7 +337,7 @@ const BOOK = [
    ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.'],
    ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights.'],
    ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Near Britomart or the Viaduct.'],
-   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 3:00pm','NZ$130 each. Sells out November to April.']]},
+   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.']]},
  {tier:'Book this month', c:'--orange', items:[
    ['insurance','Travel insurance covering NZ','Luna to sort.']]},
  {tier:'Week before', c:'--yellow', items:[
@@ -434,7 +435,7 @@ function overview(){
     <div class="rows">
       <div class="row"><span class="k">Before travel</span><span class="v">NZeTA and visitor levy<small>Needed before boarding in Sydney</small></span>${badge('book')}</div>
       <div class="row"><span class="k">2 to 7 Dec</span><span class="v">Rotorua (4 nights) and Auckland (1 night)<small>Accommodation still to sort</small></span>${badge('book')}</div>
-      <div class="row"><span class="k">Thu 3 Dec</span><span class="v">Hobbiton, 3:00pm tour<small>Sells out November to April</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">Thu 3 Dec</span><span class="v">Hobbiton, 4:00pm tour<small>Check in by 3:40pm</small></span>${badge('booked')}</div>
     </div>
     <p style="margin-top:10px"><a href="#bookings">Full booking checklist →</a></p>
   </section>
