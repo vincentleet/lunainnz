@@ -334,10 +334,10 @@ const DAYS = [
 /* ---------- BOOKINGS ---------- */
 const BOOK = [
  {tier:'Do now', c:'--red', items:[
-   ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.'],
+   ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.', true],
    ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights.'],
    ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Near Britomart or the Viaduct.'],
-   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.']]},
+   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.', true]]},
  {tier:'Book this month', c:'--orange', items:[
    ['insurance','Travel insurance covering NZ','Luna to sort.']]},
  {tier:'Week before', c:'--yellow', items:[
@@ -484,6 +484,7 @@ function day(d){
 
 let done = {};
 try{ done = JSON.parse(localStorage.getItem('luna-nz-bookings')||'{}'); }catch(e){}
+BOOK.forEach(t=>t.items.forEach(it=>{ if(it[3] && done[it[0]]===undefined) done[it[0]]=true; }));
 function bookings(){
   return `
   <section>
@@ -498,7 +499,7 @@ function bookings(){
 }
 function updateCount(){
   const all = BOOK.flatMap(t=>t.items).length;
-  const n = Object.values(done).filter(Boolean).length;
+  const n = BOOK.flatMap(t=>t.items).filter(it=>done[it[0]]).length;
   const c = document.getElementById('count'), f = document.getElementById('fill');
   if(c){ c.textContent = `${n} / ${all} done`; f.style.width = `${(n/all)*100}%`; }
 }
