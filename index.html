@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Luna's six-day visit to New Zealand, 2 to 7 December 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z%22 fill=%22%23a8740a%22/%3E%3C/svg%3E">
+<title>Luna's NZ Visit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: sticky top bar + single reading column; hash-routed views (overview, six day pages, bookings, ideas, travel) */
+:root{
+  --bg:#f5f3fb; --surface:#ffffff; --sunk:#ece8f6; --line:#dcd5ec;
+  --ink:#1b1730; --muted:#615a7c;
+  --accent:#5b3cc4;       /* twilight violet */
+  --accent-ink:#ffffff;
+  --ochre:#a8740a;        /* starlight gold */
+  --ochre-soft:#f6edd5;
+  --ok:#22764a; --ok-soft:#dcefe4;
+  --warn:#a3305e; --warn-soft:#f7e0ea;
+  --red:#b3261e; --orange:#c25e0c; --yellow:#9a7a00; --green:#2f7d3c;
+  --star:rgba(91,60,196,.18);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0b1a; --surface:#16132a; --sunk:#1f1a38; --line:#2e2750;
+  --ink:#ebe7f8; --muted:#a39cc2;
+  --accent:#b19cff; --accent-ink:#150f2e;
+  --ochre:#e9c76b; --ochre-soft:#332a17;
+  --ok:#7fd8a0; --ok-soft:#16302a;
+  --warn:#f5a6c0; --warn-soft:#3a1e2e;
+  --red:#ff8fa3; --orange:#ffb877; --yellow:#e9c76b; --green:#7fd8a0;
+  --star:rgba(255,255,255,.55);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0b1a; --surface:#16132a; --sunk:#1f1a38; --line:#2e2750;
+  --ink:#ebe7f8; --muted:#a39cc2;
+  --accent:#b19cff; --accent-ink:#150f2e;
+  --ochre:#e9c76b; --ochre-soft:#332a17;
+  --ok:#7fd8a0; --ok-soft:#16302a;
+  --warn:#f5a6c0; --warn-soft:#3a1e2e;
+  --red:#ff8fa3; --orange:#ffb877; --yellow:#e9c76b; --green:#7fd8a0;
+  --star:rgba(255,255,255,.55);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background-image:radial-gradient(1.2px 1.2px at 12% 18%,var(--star) 50%,transparent 51%),radial-gradient(1px 1px at 78% 9%,var(--star) 50%,transparent 51%),radial-gradient(1.5px 1.5px at 42% 64%,var(--star) 50%,transparent 51%),radial-gradient(1px 1px at 88% 52%,var(--star) 50%,transparent 51%),radial-gradient(1.2px 1.2px at 23% 86%,var(--star) 50%,transparent 51%),radial-gradient(1px 1px at 63% 33%,var(--star) 50%,transparent 51%);background-size:420px 420px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding-block:10px}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--accent)}
+.brand{display:inline-flex;align-items:center;gap:6px}
+.brand .moon{width:18px;height:18px;color:var(--ochre)}
+nav.main{display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a,.theme button{font:600 14px/1 var(--body);color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px;white-space:nowrap;border:0;background:none;cursor:pointer}
+nav.main a:hover,.theme button:hover{color:var(--ink);background:var(--sunk)}
+nav.main a[aria-current="page"]{color:var(--accent-ink);background:var(--accent)}
+.theme{display:flex;border:1px solid var(--line);border-radius:7px;padding:2px}
+.theme button{padding:6px 8px;font-size:12px}
+.theme button[aria-pressed="true"]{background:var(--sunk);color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+main{padding-block:28px 64px}
+.eyebrow{font:600 12px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ochre)}
+.lede{color:var(--muted);font-size:17px;max-width:62ch}
+section+section{margin-top:36px}
+h2{font-size:22px;margin-bottom:12px}
+
+/* overview hero */
+.hero h1{font-size:clamp(34px,7vw,54px);font-weight:800;letter-spacing:-.02em;margin:6px 0 10px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:20px}
+.facts div{background:var(--surface);padding:12px 14px}
+.facts b{display:block;font:700 22px/1.1 var(--display)}
+.facts small{color:var(--muted);font-size:13px}
+
+/* route strip */
+.route{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.stop{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:10px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);min-width:0}
+.stop:hover{border-color:var(--accent)}
+.stop .d{font:600 12px/1 var(--mono);color:var(--muted)}
+.stop .t{font:700 15px/1.2 var(--display)}
+.stop .p{font-size:12px;color:var(--accent);font-weight:600;margin-top:auto}
+.stop.solo .p{color:var(--ochre)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+
+/* generic list rows */
+.rows{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.row{display:grid;grid-template-columns:120px 1fr auto;gap:12px;padding:12px 14px;align-items:baseline}
+.row+.row{border-top:1px solid var(--line)}
+.row .k{font:600 13px/1.3 var(--mono);color:var(--muted)}
+.row .v{min-width:0}
+.row .v small{display:block;color:var(--muted);font-size:14px}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font:600 12px/1 var(--body);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.b-booked{background:var(--ok-soft);color:var(--ok)}
+.b-book{background:var(--warn-soft);color:var(--warn)}
+.b-free{background:var(--sunk);color:var(--muted)}
+.b-opt{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.b-day{background:var(--ochre-soft);color:var(--ochre)}
+
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.note h3{font-size:16px;margin-bottom:4px}
+.note p{margin:0;color:var(--muted);font-size:15px}
+.note.calm{background:var(--sunk);border-color:transparent;grid-column:1/-1}
+.note.calm h3{color:var(--accent)}
+
+/* day page */
+.dayhead .meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;color:var(--muted);font-size:15px}
+.dayhead h1{font-size:clamp(28px,5.5vw,40px);font-weight:800;letter-spacing:-.01em;margin-top:6px}
+.mode{font-weight:700}
+.mode.car{color:var(--accent)} .mode.solo{color:var(--ochre)}
+.flex{margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--ochre-soft);color:var(--ink);font-size:15px}
+.flex b{color:var(--ochre)}
+.part{margin-top:28px}
+.part>h2{font:600 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.part>h2::after{content:"";height:1px;background:var(--line);flex:1}
+.card{display:grid;grid-template-columns:64px 1fr;gap:4px 14px;padding:16px 0}
+.card+.card{border-top:1px dashed var(--line)}
+.card .time{font:600 15px/1.4 var(--mono);color:var(--accent)}
+.card.opt .time{color:var(--muted)}
+.card .body{min-width:0}
+.card h3{font-size:18px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.card .dur{font:500 13px/1 var(--mono);color:var(--muted)}
+.card p{margin:6px 0 0;color:var(--ink)}
+.fields{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-top:8px;font-size:14.5px}
+.fields dt{font:600 12px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.fields dd{margin:0;min-width:0}
+.map{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font:600 13px/1 var(--body);text-decoration:none;padding:7px 10px;border-radius:6px;background:var(--sunk);color:var(--ink)}
+.map:hover{background:var(--line)}
+.map svg{width:14px;height:14px}
+.eur{color:var(--muted)}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;font-weight:600}
+
+/* bookings */
+.progress{display:flex;align-items:center;gap:12px;margin:8px 0 20px}
+.progress .track{flex:1;height:8px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.progress .fill{height:100%;background:var(--accent);width:0;transition:width .3s}
+.progress b{font:600 14px/1 var(--mono);white-space:nowrap}
+.tier{margin-top:22px}
+.tier h3{font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tier h3 i{width:10px;height:10px;border-radius:50%}
+.check{display:grid;grid-template-columns:24px 1fr auto;gap:10px;padding:12px 14px;align-items:start;cursor:pointer}
+.check+.check{border-top:1px solid var(--line)}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent)}
+.check .v small{display:block;color:var(--muted);font-size:14px}
+.check.done .v>span{text-decoration:line-through;color:var(--muted)}
+
+/* ideas */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 18px}
+.filters button{font:600 13px/1 var(--body);padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.ideas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.idea{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.idea .tags{display:flex;gap:6px;flex-wrap:wrap}
+.idea h3{font-size:17px}
+.idea p{margin:0;font-size:15px;color:var(--muted)}
+.idea .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;padding-top:6px}
+
+table{border-collapse:collapse;width:100%;font-size:15px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num,.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:14px}
+
+@media (max-width:720px){
+  .bar{position:static}
+  .theme{margin-left:auto}
+  nav.main{order:3;flex-basis:100%}
+  nav.main a{padding:7px 9px}
+  .route{grid-template-columns:repeat(3,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .notes,.ideas{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr auto}
+  .row .k{grid-column:1/-1}
+  .brand{font-size:16px}
+}
+@media (max-width:420px){.route{grid-template-columns:repeat(2,1fr)} .card{grid-template-columns:52px 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#overview"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="currentColor"/></svg>Luna <span>in</span> NZ</a>
+    <nav class="main" id="nav" aria-label="Sections"></nav>
+    <div class="theme" role="group" aria-label="Appearance">
+      <button type="button" data-t="auto" id="t-auto">Auto</button>
+      <button type="button" data-t="light" id="t-light">Light</button>
+      <button type="button" data-t="dark" id="t-dark">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<script>
+(function(){
+const RATE = 0.503; // NZ$1 in EUR, approx (1 EUR ≈ NZ$1.99, Nov 2026)
+const eur = n => Math.round(n*RATE);
+const money = (n, pre) => `${pre||''}NZ$${n} <span class="eur">(~€${eur(n)})</span>`;
+const gmap = q => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const pin = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+
+const STATUS = {
+  booked:['b-booked','Booked'], book:['b-book','Need to book'], free:['b-free','Free'],
+  opt:['b-opt','Optional'], walk:['b-free','Pay on the day'], vincent:['b-day','Vincent sorts']
+};
+const badge = s => s ? `<span class="badge ${STATUS[s][0]}">${s==='booked'?'✓ ':''}${STATUS[s][1]}</span>` : '';
+
+/* ---------- DAYS ---------- */
+const DAYS = [
+ {n:1, date:'Wed 2 Dec', short:'Arrive', title:'Touchdown and the drive south', base:'Rotorua (stay TBC)', mode:'car',
+  parts:{
+   Afternoon:[
+    {t:'14:05', h:'Land in Auckland', s:'booked', dur:'QF143 from Sydney',
+     p:'Through passport control, bags and biosecurity. NZ is strict about food, so declare any snacks from Sydney or Bali rather than risk the NZ$400 fine. Allow about 45 minutes.',
+     f:{Terminal:'International'}},
+    {t:'~15:00', h:'Vincent picks you up', s:'vincent', dur:'Arrivals hall', p:'Meet at the International Arrivals exit.'},
+    {t:'15:15', h:'Drive to Rotorua', dur:'~3 hrs · 230 km', p:'Out via the Southern Motorway before the worst of the after-work traffic, then through Waikato farmland, with a short coffee and toilet stop on the way. Grab a SIM or eSIM at the airport if you need one.'}
+   ],
+   Evening:[
+    {t:'18:30', h:'Arrive Rotorua and check in', p:'First thing you\'ll notice is the smell. That\'s sulphur from the geothermal activity under the town. You stop noticing after a day.'},
+    {t:'19:00', h:'McDonald\'s', s:'walk', dur:'~45 min', p:'Easy, cheap first-night dinner after a long travel day. Fun to compare with the menu back home.', map:'McDonalds Rotorua'},
+    {t:'19:45', h:'Redwoods', s:'free', dur:'~30 min', 
+     f:{Start:'Redwoods i-SITE car park, Long Mile Rd', Bring:'Comfortable shoes'}, map:'Redwoods Whakarewarewa Forest Visitor Centre'}
+   ]}},
+
+ {n:2, date:'Thu 3 Dec', short:'Shire + market', title:'Geothermal, the Shire and the night market', base:'Rotorua', mode:'car',
+  parts:{
+   Morning:[
+    {t:'09:15', h:'Drive south', dur:'~30 min'},
+    {t:'09:45', h:'Geothermal', s:'book', dur:'~3 hrs', cost:[47,null,'']}
+   ],
+   Afternoon:[
+    {t:'12:45', h:'Mud pool', s:'free', dur:'15 min', p:'Two minutes down the road. A big pool of grey mud plopping and burping. Free, roadside.', map:'Waiotapu Mud Pools'},
+    {t:'13:00', h:'Drive to Hobbiton', dur:'~1.5 hrs', p:'With a quick lunch on the way.'},
+    {t:'15:00', h:'Hobbiton Movie Set', s:'book', dur:'2.5 hrs', cost:[130,null,'Signature Tour, adult'],
+     p:'Guided walk through the hobbit holes, Bag End and the party field, finishing with a drink at the Green Dragon Inn.',
+     f:{'Check in':'The Shire\'s Rest by 2:40pm', Book:'hobbitontours.com, sells out November to April'}, map:'The Shire\'s Rest Hobbiton'},
+    {t:'17:30', h:'Drive back to Rotorua', dur:'~55 min'}
+   ],
+   Evening:[
+    {t:'18:30', h:'Rotorua Night Market', s:'free', dur:'5 to 9pm', p:'Thursday nights only, so this is the one shot. Food trucks and stalls in the middle of Tutanekai Street. Dinner sorted.', f:{Note:'Weather permitting'}, map:'Tutanekai Street Rotorua'}
+   ]}},
+
+ {n:3, date:'Fri 4 Dec', short:'Gardens + luge', title:'Gardens, the luge and the farm', base:'Rotorua', mode:'car',
+  parts:{
+   Morning:[
+    {t:'09:00', h:'Government Gardens', s:'free', dur:'~2 hrs', p:'A slow walk through the middle of Rotorua, all free and all flat. Start in front of the Tudor-style bath house in Government Gardens, wander past the croquet and bowling greens, then follow the lakeside boardwalk out to Sulphur Point, where the water steams and turns milky white among the black swans. Loop back along the lakefront and grab a coffee on Eat Streat.',
+     f:{Route:'Bath house → Sulphur Point → lakefront → Eat Streat', Note:'This could be IRL streamed.', Check:'Whether the museum inside the bath house has reopened'}, map:'Government Gardens Rotorua'},
+    {t:'11:00', h:'Ōhinemutu village', s:'free', dur:'~45 min', p:'A 10 minute walk along the lakefront from Eat Streat. A Māori village that people still live in, with steam rising between the houses and the carved meeting house, Tamatekapua, facing the lake. Step inside St Faith\'s Church to see the window where Christ is etched as if walking on the lake.',
+     f:{Respect:'Stay on the roads and paths, don\'t enter the marae unless invited, and keep voices down. A small donation at St Faith\'s is welcome.'}, map:'St Faiths Church Ohinemutu'},
+    {t:'11:45', h:'Kuirau Park', s:'free', dur:'~45 min', p:'Short walk inland to Kuirau Park, with its steaming lake, fenced-off boiling mud and hot foot baths to sit and chat at.', map:'Kuirau Park Rotorua'}
+   ],
+   Afternoon:[
+    {t:'12:45', h:'Skyline gondola and luge', s:'walk', dur:'~1.5 hrs', cost:[78,null,'gondola + 3 luge rides (1 ride NZ$61, 5 rides NZ$91)'],
+     p:'Gondola up Mt Ngongotahā for the view over the lake, then race down in a gravity cart on the luge tracks. Silly and very fun. Buy the multi-ride pack, one is never enough. Grab lunch at the café up top.',
+     map:'Skyline Rotorua'},
+    {t:'14:30', h:'Farm', s:'book', dur:'~2 hrs', cost:[68,null,'']}
+   ],
+   Evening:[
+    {t:'~17:30', h:'First Table dinner on Eat Streat', s:'book', dur:'~1.5 hrs', p:'Early dinner after the luge, with time to rest before the evening. With nothing else on until then, this is the easiest night to grab the earliest sitting.',
+     f:{'First Table':'50% off food for 2, small booking fee, drinks full price. Arrive within 15 min of the booking or the deal is off.'}, map:'Eat Streat Rotorua'},
+    {t:'21:00', h:'Redwoods', s:'book', dur:'~45 min', cost:[65,null,''], map:'Redwoods Treewalk Rotorua'}
+   ]}},
+
+ {n:4, date:'Sat 5 Dec', short:'Bay of Plenty', title:'A mystery morning and Ōhope Beach', base:'Rotorua', mode:'car',
+  parts:{
+   Morning:[
+    {t:'08:30', h:'Okere Falls on the way', s:'free', dur:'~45 min', p:'Short riverside walk to a lookout where rafters drop over a 7 m waterfall. It\'s right on the road out towards the coast, about 20 minutes from town.', map:'Okere Falls Scenic Reserve'},
+    {t:'10:15', h:'???', dur:'~1.5 to 2 hrs'}
+   ],
+   Afternoon:[
+    {t:'13:30', h:'Ōhope Beach', s:'free', dur:'~2.5 hrs', p:'Around 11 km of white sand with Whakaari / White Island out on the horizon.', map:'Ohope Beach'},
+    {t:'14:30', h:'Otarawairere Bay walk', s:'free', opt:true, dur:'~1 hr return', p:'Bush track over the headland from the west end of Ōhope down to a sheltered cove. Only passable at lower tide, so check the tide times first.', map:'Otarawairere Bay'},
+    {t:'16:30', h:'Drive back to Rotorua', dur:'~1 hr 15 min'}
+   ],
+   Evening:[
+    {t:'~18:00', h:'First Table dinner on Eat Streat', s:'book', dur:'~1.5 hrs', p:'Last night in Rotorua. Back from the coast around 5:45, so pick a sitting from 6pm.',
+     f:{'First Table':'50% off food, drinks full price. Arrive within 15 min of the booking.'}, map:'Eat Streat Rotorua'}
+   ]}},
+
+ {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, a hobbit stop, then the city', base:'Auckland (hotel TBC)', mode:'car',
+  parts:{
+   Morning:[
+    {t:'08:30', h:'Check out and head north', dur:'~1 hr to Putaruru'},
+    {t:'09:30', h:'Te Waihou Blue Spring', s:'free', dur:'~1 hr', p:'Spring water so clear it looks unreal, running over bright green weed. Park at the Leslie Road end for the shortest walk to the spring; the full riverside track is about 1.5 hours return. No swimming.', map:'Blue Spring Te Waihou Walkway'},
+    {t:'10:45', h:'Drive to Matamata', dur:'~30 min'},
+    {t:'11:15', h:'Matamata i-SITE hobbit gatehouse', s:'free', dur:'~20 min', p:'The town\'s visitor centre is built to look like a hobbit gatehouse. A free photo stop and the closest you get to the Shire without the tour. Grab a coffee in town while you\'re there.', map:'Matamata i-SITE'},
+    {t:'11:45', h:'Drive to Auckland', dur:'~2 hrs', p:'Check in, then the rest of the day in the city together.'}
+   ],
+   Afternoon:[
+    {t:'14:00', h:'Check in, Auckland', p:'Somewhere near Britomart or the Viaduct keeps the ferry and the airport bus a short walk away.'},
+    {t:'15:00', h:'Ferry to Devonport', s:'walk', dur:'~3 hrs', p:'12 minute ferry from the Downtown Ferry Terminal to a seaside village of old villas and cafés. Walk up Mt Victoria, a small volcanic cone, for the view back over the harbour and the city. Ferries take contactless cards.', map:'Devonport Wharf Auckland'}
+   ],
+   Evening:[
+    {t:'18:30', h:'Wynyard Quarter and the Viaduct', s:'free', dur:'Evening', p:'Waterfront walk, boats, plenty of places to eat. Sunset is around 8:25pm. Ponsonby is the other good dinner option, a short bus ride away. First Table is worth checking for an early table in either.', f:{Note:'Vincent heads back to Rotorua after dinner.'}, map:'Wynyard Quarter Auckland'}
+   ]}},
+
+ {n:6, date:'Mon 7 Dec', short:'Depart', title:'Slow morning, then LA', base:'Flying out', mode:'solo',
+  parts:{
+   Morning:[
+    {t:'09:00', h:'Breakfast and a last wander', s:'free', p:'Commercial Bay and Britomart are right by most CBD hotels. Pick up anything you forgot to buy.', map:'Commercial Bay Auckland'},
+    {t:'11:30', h:'Check out, airport bus', s:'walk', dur:'~45 to 60 min', p:'SkyBus runs from the CBD to the airport every 10 to 15 minutes and takes contactless cards. A rideshare is quicker if you\'re running late.', map:'SkyBus Auckland Airport'}
+   ],
+   Afternoon:[
+    {t:'12:50', h:'At the airport', dur:'3 hrs before departure', p:'Recommended for long-haul. Check in online the day before.'},
+    {t:'15:50', h:'Fly to Los Angeles', s:'booked', dur:'AA82 · lands 07:10', p:'You cross the date line, so you land in LA at 7:10am on the same Monday, about eight hours before you took off.'}
+   ]}}
+];
+
+/* ---------- BOOKINGS ---------- */
+const BOOK = [
+ {tier:'Do now', c:'--red', items:[
+   ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.'],
+   ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights.'],
+   ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Near Britomart or the Viaduct.'],
+   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 3:00pm','NZ$130 each. Sells out November to April.']]},
+ {tier:'Book this month', c:'--orange', items:[
+   ['insurance','Travel insurance covering NZ','Luna to sort.']]},
+ {tier:'Week before', c:'--yellow', items:[
+   ['wot','Thu 3 Dec morning tickets','From NZ$47. Vincent to book.'],
+   ['redwoods','Redwoods Treewalk + Nightlights combo, Fri 4 Dec ~21:00','NZ$65. Book a Nightlights time slot.'],
+   ['tide','Check Ōhope tide times for Sat 5 Dec','For the Otarawairere Bay track, which needs lower tide.'],
+   ['julians','Check opening hours for Sat 5 Dec, 10:15 stop','Vincent to check.'],
+   ['agrodome','Fri 4 Dec 2:30pm tickets','NZ$68 each. Vincent to book.'],
+   ['firsttable','First Table: Eat Streat dinners Fri 4 and Sat 5 Dec','Tables open at midday, 14 days ahead (from about 20 Nov). Early sittings go fast.'],
+   ['nztd','NZ Traveller Declaration','Online, within 24 hours before the Sydney flight.']]},
+ {tier:'On the day', c:'--green', items:[
+   ['skyline','Skyline gondola + luge','Buy at the base.'],
+   ['ferry','Devonport ferry','Contactless at the Downtown Ferry Terminal.'],
+   ['checkin','Check in online for AA82','Opens 24 hours before.']]}
+];
+
+/* ---------- IDEAS ---------- */
+const IDEAS = [
+ {h:'Mini golf with rabbits', tags:['Rotorua'], cost:'NZ$22 (~€11), deals from NZ$16; night golf NZ$25', p:'18-hole course where big, tame Flemish rabbits hop around and get in the way of your putts. Open 9am to 10pm, rain or shine, so it works as an evening activity too. On Fairy Springs Road, right next to Skyline.', map:'Rotorua Mini Golf 152 Fairy Springs Road'},
+ {h:'Hamurana Springs walk', tags:['Nature','Rotorua'], cost:'NZ$18 (~€9), some slots NZ$13', p:'Self-guided walk around the deepest natural spring in the North Island, with crystal-clear blue water, a grove of redwoods, and riverside decks. About 45 minutes to an hour. 15 minutes from town on the north side of the lake. Summer hours 9am to 6pm, last entry 5pm. Sites here are significant to Ngāti Rangiwewehi.', map:'Hamurana Springs'},
+ {h:'Waimangu Volcanic Valley', tags:['Geothermal','Rotorua'], cost:'NZ$75 (~€38)', p:'The world\'s youngest geothermal valley, formed by the 1886 Tarawera eruption. A mostly downhill walk past steaming Frying Pan Lake, the bright blue Inferno Crater lake and new silica terraces, down to Lake Rotomahana. Trails run 1.5 to 4 km. Last entry 3:30pm. 25 minutes south of town.', map:'Waimangu Volcanic Valley'},
+ {h:'Secret Spot hot tubs', tags:['Rotorua'], cost:'NZ$46 (~€23)', p:'Private cedar hot tubs filled with spring water, tucked beside the Redwoods forest with cold plunge tubs and drinks brought to your tub. 45-minute slots, 2 minutes from town.', map:'Secret Spot Hot Tubs Rotorua'},
+ {h:'Paradise Valley Springs', tags:['Rotorua'], cost:'NZ$38 (~€19); Vincent\'s Mai card gets him 50% off', p:'Small wildlife park in native bush with a pride of African lions (feeding at 2:30pm), kea in a walk-through aviary (feeding at 3pm), and trout in clear spring-fed streams. 15 minutes from town, open until dark.', map:'Paradise Valley Springs Wildlife Park'},
+ {h:'Waitangi Soda Springs', tags:['Geothermal','Day trip'], cost:'About NZ$10 (~€5)', p:'A simple, natural hot pool at Lake Rotomā, about 40 minutes out on the road towards Whakatāne. Hot water bubbles up through a sandy bottom. Open early morning and evening only (6 to 10am, 4 to 9pm when last checked). Very iron-rich water, so wear old togs.', map:'Waitangi Soda Springs'},
+ {h:'The Buried Village', tags:['Culture','Rotorua'], cost:'NZ$25 (~€13), some slots NZ$12.50', p:'Excavated remains of Te Wairoa, a village buried by the 1886 Tarawera eruption, with a small museum and a bush walk to a waterfall. Open Wednesday to Sunday, 10am to 4pm. 15 minutes from town on the scenic road to Lake Tarawera.', map:'Buried Village Te Wairoa'},
+ {h:'Mount Maunganui', tags:['Free','Day trip','Nature'], cost:'Summit walk free; hot saltwater pools NZ$27 (~€14)', p:'About an hour from Rotorua. Walk up Mauao, the extinct volcano at the end of the beach, for views along the coast, then soak in the hot saltwater pools at its base or just hang out on the main beach.', map:'Mauao Mount Maunganui'},
+ {h:'Rangitoto Island', tags:['Auckland','Nature'], cost:'NZ$60 (~€30) ferry return', p:'25 minute ferry to Auckland\'s youngest volcano. About 2 hours return to the summit through lava fields and pōhutukawa forest, with lava caves on a short side track. No shops or bins on the island, so bring food and water. Last ferry back around 4pm.', map:'Rangitoto Island'},
+ {h:'Auckland Art Gallery', tags:['Free','Auckland','Culture'], cost:'Free (special exhibitions may charge)', p:'Free entry to the main collection, including New Zealand and Māori art, in a striking building next to Albert Park. Open daily 10am to 5pm. Easy walk from the CBD hotels.', map:'Auckland Art Gallery Toi o Tamaki'},
+ {h:'Blue Lake loop walk', tags:['Free','Nature','Rotorua'], cost:'Free', p:'Easy track all the way around Lake Tikitapu, about 1.5 hours, with a sandy beach for a swim at the end. The Blue and Green Lakes lookout is on the same road.', map:'Lake Tikitapu Blue Lake'},
+ {h:'Lake Okareka walkway', tags:['Free','Nature','Rotorua'], cost:'Free', p:'Short boardwalk over wetlands along a quiet lake 15 minutes from town. Flat, peaceful, good for birds.', map:'Lake Okareka Walkway'},
+ {h:'Wairere Falls', tags:['Free','Nature','Day trip'], cost:'Free', p:'The tallest waterfall in the North Island, near Matamata. About 45 minutes uphill through bush to the lookout, lots of steps. A detour on the Sunday drive north if you leave early.', map:'Wairere Falls Track'},
+ {h:'Auckland Domain and Wintergardens', tags:['Free','Auckland'], cost:'Free', p:'Auckland\'s oldest park, on a volcanic crater. The Victorian glasshouses are free to walk through, and the museum sits on top.', map:'Auckland Domain Wintergardens'},
+ {h:'One Tree Hill and Cornwall Park', tags:['Free','Auckland','Nature'], cost:'Free', p:'Huge parkland with sheep grazing in the middle of the city, and a volcanic summit with views over both harbours.', map:'Maungakiekie One Tree Hill'},
+ {h:'Takapuna to Milford coastal walk', tags:['Free','Auckland','Nature'], cost:'Bus fare, contactless capped at NZ$20 (~€10) a day', p:'Rocky shoreline walk on the North Shore past old lava flows and beaches, about an hour. Rangitoto island sits right across the water.', map:'Takapuna Beach Auckland'},
+ {h:'Waiheke Island', tags:['Auckland','Day trip'], cost:'NZ$65 (~€33) ferry return', p:'45 min ferry to an island of vineyards, beaches and clifftop walks. Needs a full day, so it only fits if she stays a second night in Auckland.', map:'Oneroa Beach Waiheke'},
+ {h:'Kerosene Creek', tags:['Free','Geothermal','Rotorua'], cost:'Free', p:'A warm natural stream with a small waterfall pool in the bush, 30 min south. Like a free hot spring. Keep your head above water.', map:'Kerosene Creek'},
+ {h:'Te Puia', tags:['Geothermal','Culture','Rotorua'], cost:'NZ$105 (~€53)', p:'Guided tour to Pōhutu geyser, the national carving and weaving schools, and a kiwi house, the most reliable way to see a real kiwi. Taken out of Day 3; the Te Puia Whānau Card (NZ$39 for Rotorua residents) halves the tour price for the cardholder.', map:'Te Puia Rotorua'},
+ {h:'Hell\'s Gate mud bath', tags:['Geothermal','Rotorua'], cost:'NZ$45 to 115 (~€23 to 58), park entry to mud bath + spa', p:'Geothermal park with a proper mud bath and sulphur spa. 15 minutes from town. Messy and fun.', map:'Hells Gate Rotorua'},
+ {h:'Velocity Valley', tags:['Adventure','Rotorua'], cost:'From NZ$55 (~€28) a ride', p:'Jetboat, swoop and freefall rides on the edge of town if she wants adrenaline.', map:'Velocity Valley Rotorua'},
+ {h:'Waitomo Glowworm Caves', tags:['Day trip','Nature'], cost:'NZ$61 (~€31)', p:'Boat ride through a cave ceiling full of glowworms. 2 hrs from Rotorua; a long detour on the drive north.', map:'Waitomo Glowworm Caves'},
+ {h:'Taupō: Huka Falls + Craters of the Moon', tags:['Day trip','Geothermal'], cost:'Huka Falls free; Craters NZ$15 (~€8)', p:'An hour south of Rotorua. Huka Falls is a thundering blue river gorge; Craters of the Moon is a steaming boardwalk walk.', map:'Huka Falls'},
+ {h:'Auckland Museum and the Domain', tags:['Auckland','Culture'], cost:'NZ$32 (~€16) for international visitors', p:'Best Māori and Pacific collection in the country, in a big park on an old volcano.', map:'Auckland War Memorial Museum'},
+ {h:'Maungawhau / Mt Eden', tags:['Free','Auckland','Nature'], cost:'Free', p:'Walk up to the crater rim for the classic 360° view of the city and harbour.', map:'Maungawhau Mount Eden'},
+ {h:'Sky Tower', tags:['Auckland'], cost:'NZ$47 (~€24)', p:'Observation deck 220 m up. Fine on a clear day, skip if it\'s cloudy.', map:'Sky Tower Auckland'}
+];
+
+/* ---------- RENDER ---------- */
+const app = document.getElementById('app');
+const nav = document.getElementById('nav');
+const NAV = [['overview','Overview'], ...DAYS.map(d=>[`day-${d.n}`,`Day ${d.n}`]), ['bookings','Bookings'], ['ideas','Ideas'], ['travel','Flights & stays']];
+nav.innerHTML = NAV.map(([id,l])=>`<a href="#${id}" data-v="${id}">${l}</a>`).join('');
+
+function planned(){
+  let t=0; DAYS.forEach(d=>Object.values(d.parts).flat().forEach(c=>{ if(c.cost && !c.opt) t += (c.cost[1]||c.cost[0]); }));
+  return t;
+}
+
+function overview(){
+  const total = planned();
+  return `
+  <section class="hero">
+    <div class="eyebrow">Wed 2 to Mon 7 December 2026</div>
+    <h1>Luna in Aotearoa</h1>
+    <p class="lede">Pick-up in Auckland, four nights in Rotorua for geysers, forests, Māori culture, Hobbiton and a day out on the Bay of Plenty coast, then a night in Auckland before the flight to LA.</p>
+    <div class="facts">
+      <div><b>5</b><small>nights</small></div>
+      <div><b>4 + 1</b><small>Rotorua, Auckland</small></div>
+      <div><b>~900 km</b><small>driving, all with Vincent</small></div>
+      <div><b class="num">~NZ$${total}</b><small>planned activities (~€${eur(total)})</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The route</h2>
+    <div class="route">${DAYS.map(d=>`
+      <a class="stop ${d.mode==='solo'?'solo':''}" href="#day-${d.n}">
+        <span class="d">Day ${d.n} · ${d.date}</span>
+        <span class="t">${d.short}</span>
+        <span class="p">${d.base.replace(/ \(.*\)/,'')}</span>
+      </a>`).join('')}
+    </div>
+    <div class="legend"><span><i style="background:var(--accent)"></i>With Vincent, by car</span><span><i style="background:var(--ochre)"></i>Solo in Auckland</span></div>
+  </section>
+
+  <section>
+    <h2>Flights</h2>
+    <div class="rows">
+      <div class="row"><span class="k">Wed 2 Dec</span><span class="v"><b>QF143</b> Sydney 08:55 → Auckland 14:05<small>Qantas · 3h 10m</small></span>${badge('booked')}</div>
+      <div class="row"><span class="k">Mon 7 Dec</span><span class="v"><b>AA82</b> Auckland 15:50 → Los Angeles 07:10<small>American Airlines · lands the same Monday</small></span>${badge('booked')}</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Book first</h2>
+    <div class="rows">
+      <div class="row"><span class="k">Before travel</span><span class="v">NZeTA and visitor levy<small>Needed before boarding in Sydney</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">2 to 7 Dec</span><span class="v">Rotorua (4 nights) and Auckland (1 night)<small>Accommodation still to sort</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">Thu 3 Dec</span><span class="v">Hobbiton, 3:00pm tour<small>Sells out November to April</small></span>${badge('book')}</div>
+    </div>
+    <p style="margin-top:10px"><a href="#bookings">Full booking checklist →</a></p>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <div class="notes">
+      <div class="note calm"><h3>No snakes. Anywhere.</h3><p>New Zealand has no snakes at all and nothing dangerous in the bush. The only venomous spider, the katipō, is rare and shy and hides under driftwood in coastal dune grass. Bites hardly ever happen. On the beach at Ōhope, stick to the open sand and paths and don't dig under logs. Forest walks here are just forest walks.</p></div>
+      <div class="note"><h3>Weather</h3><p>Early summer. Expect low to mid 20s °C by day, cooler nights in Rotorua, and the odd shower. Bring a light jacket.</p></div>
+      <div class="note"><h3>Sun</h3><p>The UV is much stronger than Europe, even when it's cloudy. Sunscreen and sunglasses every day.</p></div>
+      <div class="note"><h3>Money</h3><p>Cards and phone payments work everywhere, including Auckland buses. No tipping expected. Prices here use NZ$1 ≈ €0.50.</p></div>
+      <div class="note"><h3>Plugs</h3><p>Type I, the same as Australia. European plugs need an adaptor.</p></div>
+      <div class="note"><h3>Rotorua smell</h3><p>The whole town smells faintly of sulphur. It's the geothermal activity, it's harmless, and you'll stop noticing.</p></div>
+      <div class="note"><h3>Pack</h3><p>Comfortable walking shoes, a day bag, sunscreen.</p></div>
+    </div>
+  </section>`;
+}
+
+function card(c){
+  const cost = c.cost ? `<dt>Cost</dt><dd>${c.cost[1] ? `NZ$${c.cost[0]} to ${c.cost[1]} <span class="eur">(~€${eur(c.cost[0])} to ${eur(c.cost[1])})</span>` : money(c.cost[0])}${c.cost[2]?` · ${c.cost[2]}`:''}</dd>` : '';
+  const f = c.f ? Object.entries(c.f).map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('') : '';
+  return `<article class="card ${c.opt?'opt':''}">
+    <div class="time">${c.t}</div>
+    <div class="body">
+      <h3>${c.h} ${badge(c.s)}</h3>
+      ${c.dur?`<div class="dur">${c.dur}</div>`:''}
+      ${c.p?`<p>${c.p}</p>`:''}
+      ${(cost||f)?`<dl class="fields">${cost}${f}</dl>`:''}
+    </div>
+  </article>`;
+}
+
+function day(d){
+  const prev = d.n>1 ? `<a href="#day-${d.n-1}">← Day ${d.n-1}</a>` : `<a href="#overview">← Overview</a>`;
+  const next = d.n<DAYS.length ? `<a href="#day-${d.n+1}">Day ${d.n+1} →</a>` : `<a href="#bookings">Bookings →</a>`;
+  return `
+  <section class="dayhead">
+    <div class="eyebrow">Day ${d.n} · ${d.date}</div>
+    <h1>${d.title}</h1>
+    <div class="meta"><span>Tonight: <b>${d.base}</b></span><span class="mode ${d.mode}">${d.mode==='car'?'With Vincent, by car':'Solo, on foot and transit'}</span></div>
+    ${d.flex?`<div class="flex">${d.flex}</div>`:''}
+  </section>
+  ${Object.entries(d.parts).map(([k,cards])=>`<section class="part"><h2>${k}</h2>${cards.map(c=>card(c)).join('')}</section>`).join('')}
+  <div class="pager">${prev}<a href="#overview">Overview</a>${next}</div>`;
+}
+
+let done = {};
+try{ done = JSON.parse(localStorage.getItem('luna-nz-bookings')||'{}'); }catch(e){}
+function bookings(){
+  return `
+  <section>
+    <div class="eyebrow">Checklist</div>
+    <h1 style="font-size:34px;margin:6px 0 4px">Bookings</h1>
+    <p class="lede">Ordered by urgency. Ticks are saved in this browser only.</p>
+    <div class="progress"><div class="track"><div class="fill" id="fill"></div></div><b id="count"></b></div>
+    ${BOOK.map(t=>`<div class="tier"><h3><i style="background:var(${t.c})"></i>${t.tier}</h3><div class="rows">
+      ${t.items.map(([id,l,s])=>`<label class="check ${done[id]?'done':''}" for="bk-${id}"><input type="checkbox" id="bk-${id}" data-id="${id}" ${done[id]?'checked':''}><span class="v"><span>${l}</span><small>${s}</small></span></label>`).join('')}
+    </div></div>`).join('')}
+  </section>`;
+}
+function updateCount(){
+  const all = BOOK.flatMap(t=>t.items).length;
+  const n = Object.values(done).filter(Boolean).length;
+  const c = document.getElementById('count'), f = document.getElementById('fill');
+  if(c){ c.textContent = `${n} / ${all} done`; f.style.width = `${(n/all)*100}%`; }
+}
+
+let ideaFilter = 'All';
+function ideas(){
+  const tags = ['All', ...new Set(IDEAS.flatMap(i=>i.tags))];
+  const list = IDEAS.filter(i=>ideaFilter==='All'||i.tags.includes(ideaFilter));
+  return `
+  <section>
+    <div class="eyebrow">Spare time and swaps</div>
+    <h1 style="font-size:34px;margin:6px 0 4px">Extra ideas</h1>
+    <p class="lede">For the flex day, a rainy afternoon, or if something on the plan doesn't appeal.</p>
+    <div class="filters" role="group" aria-label="Filter ideas">${tags.map(t=>`<button type="button" data-f="${t}" aria-pressed="${t===ideaFilter}">${t}</button>`).join('')}</div>
+    <div class="ideas">${list.map(i=>`
+      <article class="idea">
+        <div class="tags">${i.tags.map(t=>`<span class="badge ${t==='Free'?'b-booked':'b-free'}">${t}</span>`).join('')}</div>
+        <h3>${i.h}</h3>
+        <p>${i.p}</p>
+        ${i.cost?`<div class="foot"><span class="eur">${i.cost}</span></div>`:''}
+      </article>`).join('')}</div>
+  </section>`;
+}
+
+function travel(){
+  return `
+  <section>
+    <div class="eyebrow">Confirmations</div>
+    <h1 style="font-size:34px;margin:6px 0 16px">Flights and stays</h1>
+    <h2>Flights</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Date</th><th>Flight</th><th>Route</th><th>Times</th></tr></thead>
+      <tbody>
+        <tr><td>Wed 2 Dec</td><td class="mono">QF143</td><td>Sydney T1 → Auckland Intl</td><td class="num">08:55 → 14:05</td></tr>
+        <tr><td>Mon 7 Dec</td><td class="mono">AA82</td><td>Auckland → Los Angeles</td><td class="num">15:50 → 07:10</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+  <section>
+    <h2>Where you're staying</h2>
+    <div class="rows">
+      <div class="row"><span class="k">2 to 6 Dec</span><span class="v"><b>Rotorua</b> · 4 nights<small>Somewhere walkable to Eat Streat and the lakefront makes evenings easy.</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">6 to 7 Dec</span><span class="v"><b>Auckland CBD</b> · 1 night<small>Near Britomart or the Viaduct: walk to the Devonport ferry, SkyBus to the airport.</small></span>${badge('book')}</div>
+    </div>
+  </section>
+  <section>
+    <h2>Driving</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Day</th><th>Leg</th><th>Time</th></tr></thead>
+      <tbody>
+        <tr><td>Wed 2</td><td>Auckland Airport → Rotorua</td><td class="num">~3 hrs</td></tr>
+        <tr><td>Thu 3</td><td>Rotorua → Geothermal → Hobbiton → Rotorua</td><td class="num">~3 hrs total</td></tr>
+        <tr><td>Sat 5</td><td>Rotorua → Whakatāne / Ōhope, via Okere Falls</td><td class="num">~1 hr 15 min each way</td></tr>
+        <tr><td>Sun 6</td><td>Rotorua → Blue Spring, Putaruru</td><td class="num">~1 hr</td></tr>
+        <tr><td>Sun 6</td><td>Putaruru → Matamata</td><td class="num">~30 min</td></tr>
+        <tr><td>Sun 6</td><td>Matamata → Auckland CBD</td><td class="num">~2 hrs</td></tr>
+      </tbody>
+    </table></div>
+  </section>`;
+}
+
+function render(){
+  const v = (location.hash||'#overview').slice(1);
+  let html;
+  const m = v.match(/^day-(\d)$/);
+  if(m && DAYS[m[1]-1]) html = day(DAYS[m[1]-1]);
+  else if(v==='bookings') html = bookings();
+  else if(v==='ideas') html = ideas();
+  else if(v==='travel') html = travel();
+  else html = overview();
+  app.innerHTML = html;
+  nav.querySelectorAll('a').forEach(a=>{
+    const on = a.dataset.v===v || (!NAV.some(n=>n[0]===v) && a.dataset.v==='overview');
+    if(on){ a.setAttribute('aria-current','page'); a.scrollIntoView({block:'nearest',inline:'nearest'}); } else a.removeAttribute('aria-current');
+  });
+  updateCount();
+}
+window.addEventListener('hashchange',()=>{ render(); window.scrollTo(0,0); });
+
+app.addEventListener('change',e=>{
+  const id = e.target.dataset && e.target.dataset.id; if(!id) return;
+  done[id] = e.target.checked;
+  e.target.closest('.check').classList.toggle('done', e.target.checked);
+  try{ localStorage.setItem('luna-nz-bookings', JSON.stringify(done)); }catch(err){}
+  updateCount();
+});
+app.addEventListener('click',e=>{
+  const b = e.target.closest('[data-f]'); if(!b) return;
+  ideaFilter = b.dataset.f; render();
+});
+
+/* theme */
+const root = document.documentElement;
+function setTheme(t){
+  if(t==='auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.t===t));
+  try{ localStorage.setItem('luna-nz-theme',t); }catch(e){}
+}
+let saved='auto'; try{ saved = localStorage.getItem('luna-nz-theme')||'auto'; }catch(e){}
+setTheme(saved);
+document.querySelectorAll('.theme button').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.t)));
+
+render();
+})();
+</script>
+
+</body>
+</html>
