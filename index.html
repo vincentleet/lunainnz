@@ -230,7 +230,7 @@ const badge = s => s ? `<span class="badge ${STATUS[s][0]}">${s==='booked'?'✓ 
 
 /* ---------- DAYS ---------- */
 const DAYS = [
- {n:1, date:'Wed 2 Dec', short:'Arrive', title:'Touchdown and the drive south', base:'Rotorua (stay TBC)', mode:'car',
+ {n:1, date:'Wed 2 Dec', short:'Arrive', title:'Touchdown and the drive south', base:'Rotorua', mode:'car',
   parts:{
    Afternoon:[
     {t:'14:05', h:'Land in Auckland', s:'booked', dur:'QF143 from Sydney',
@@ -302,7 +302,7 @@ const DAYS = [
      f:{'First Table':'50% off food, drinks full price. Arrive within 15 min of the booking.'}, map:'Eat Streat Rotorua'}
    ]}},
 
- {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, a hobbit stop, then the city', base:'Auckland (hotel TBC)', mode:'car',
+ {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, a hobbit stop, then the city', base:'Auckland', mode:'car',
   parts:{
    Morning:[
     {t:'08:30', h:'Check out and head north', dur:'~1 hr to Putaruru'},
@@ -335,8 +335,8 @@ const DAYS = [
 const BOOK = [
  {tier:'Do now', c:'--red', items:[
    ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.', true],
-   ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights.'],
-   ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Near Britomart or the Viaduct.'],
+   ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights. Booked.', true],
+   ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Booked.', true],
    ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.', true]]},
  {tier:'Book this month', c:'--orange', items:[
    ['insurance','Travel insurance covering NZ','Luna to sort.']]},
@@ -434,7 +434,7 @@ function overview(){
     <h2>Book first</h2>
     <div class="rows">
       <div class="row"><span class="k">Before travel</span><span class="v">NZeTA and visitor levy<small>Needed before boarding in Sydney</small></span>${badge('booked')}</div>
-      <div class="row"><span class="k">2 to 7 Dec</span><span class="v">Rotorua (4 nights) and Auckland (1 night)<small>Accommodation still to sort</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">2 to 7 Dec</span><span class="v">Rotorua (4 nights) and Auckland (1 night)<small>Accommodation sorted</small></span>${badge('booked')}</div>
       <div class="row"><span class="k">Thu 3 Dec</span><span class="v">Hobbiton, 4:00pm tour<small>Check in by 3:40pm</small></span>${badge('booked')}</div>
     </div>
     <p style="margin-top:10px"><a href="#bookings">Full booking checklist →</a></p>
@@ -541,8 +541,8 @@ function travel(){
   <section>
     <h2>Where you're staying</h2>
     <div class="rows">
-      <div class="row"><span class="k">2 to 6 Dec</span><span class="v"><b>Rotorua</b> · 4 nights<small>Somewhere walkable to Eat Streat and the lakefront makes evenings easy.</small></span>${badge('book')}</div>
-      <div class="row"><span class="k">6 to 7 Dec</span><span class="v"><b>Auckland CBD</b> · 1 night<small>Near Britomart or the Viaduct: walk to the Devonport ferry, SkyBus to the airport.</small></span>${badge('book')}</div>
+      <div class="row"><span class="k">2 to 6 Dec</span><span class="v"><b>Rotorua</b> · 4 nights<small>Booked.</small></span>${badge('booked')}</div>
+      <div class="row"><span class="k">6 to 7 Dec</span><span class="v"><b>Auckland CBD</b> · 1 night<small>Booked.</small></span>${badge('booked')}</div>
     </div>
   </section>
   <section>
