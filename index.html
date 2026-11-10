@@ -286,11 +286,14 @@ const DAYS = [
     {t:'21:00', h:'Redwoods', s:'book', dur:'~45 min', cost:[65,null,''], map:'Redwoods Rotorua'}
    ]}},
 
- {n:4, date:'Sat 5 Dec', short:'Bay of Plenty', title:'A mystery morning and Ōhope Beach', base:'Rotorua', mode:'car',
+ {n:4, date:'Sat 5 Dec', short:'Bay of Plenty', title:'A waterfall, a mystery and Ōhope Beach', base:'Rotorua', mode:'car',
   parts:{
    Morning:[
-    {t:'08:30', h:'Okere Falls on the way', s:'free', dur:'~45 min', p:'Short riverside walk to a lookout where rafters drop over a 7 m waterfall. It\'s right on the road out towards the coast, about 20 minutes from town.', map:'Okere Falls Scenic Reserve'},
-    {t:'10:15', h:'???', dur:'~1.5 to 2 hrs'}
+    {t:'08:10', h:'Leave Rotorua for Kawerau', dur:'~50 min'},
+    {t:'09:00', h:'Permit at Kawerau i-SITE', dur:'~10 min', f:{Cost:'NZ$10', Open:'Saturdays 9am to 1pm, Plunket Street', Note:'Weekends only. The forest road can close in summer when fire risk is high, so check that week.'}},
+    {t:'09:35', h:'Tarawera Falls', s:'free', dur:'~1.5 hrs incl. drive', p:'Forestry road in from Kawerau, then an easy 20 minute walk through bush to a waterfall that bursts straight out of a cliff face.', f:{Note:'Track has been rerouted around some damage. Take care.'}, map:'Tarawera Falls'},
+    {t:'11:15', h:'Drive towards Whakatāne', dur:'~30 min'},
+    {t:'11:45', h:'???', dur:'~1.5 hrs'}
    ],
    Afternoon:[
     {t:'13:30', h:'Ōhope Beach', s:'free', dur:'~2.5 hrs', p:'Around 11 km of white sand with Whakaari / White Island out on the horizon.', map:'Ohope Beach'},
@@ -302,18 +305,21 @@ const DAYS = [
      f:{'First Table':'50% off food, drinks full price. Arrive within 15 min of the booking.'}, map:'Eat Streat Rotorua'}
    ]}},
 
- {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, a hobbit stop, then the city', base:'Auckland', mode:'car',
+ {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, the gorge, then the city', base:'Auckland', mode:'car',
   parts:{
    Morning:[
     {t:'08:30', h:'Check out and head north', dur:'~1 hr to Putaruru'},
     {t:'09:30', h:'Te Waihou Blue Spring', s:'free', dur:'~1 hr', p:'Spring water so clear it looks unreal, running over bright green weed. Park at the Leslie Road end for the shortest walk to the spring; the full riverside track is about 1.5 hours return. No swimming.', map:'Blue Spring Te Waihou Walkway'},
     {t:'10:45', h:'Drive to Matamata', dur:'~30 min'},
     {t:'11:15', h:'Matamata i-SITE hobbit gatehouse', s:'free', dur:'~20 min', p:'The town\'s visitor centre is built to look like a hobbit gatehouse. A free photo stop and the closest you get to the Shire without the tour. Grab a coffee in town while you\'re there.', map:'Matamata i-SITE'},
-    {t:'11:45', h:'Drive to Auckland', dur:'~2 hrs', p:'Check in, then the rest of the day in the city together.'}
+    {t:'11:35', h:'Drive to Karangahake Gorge', dur:'~1 hr', p:'Via Te Aroha and Paeroa.'}
    ],
    Afternoon:[
-    {t:'14:00', h:'Check in, Auckland', p:'Somewhere near Britomart or the Viaduct keeps the ferry and the airport bus a short walk away.'},
-    {t:'15:00', h:'Ferry to Devonport', s:'walk', dur:'~3 hrs', p:'12 minute ferry from the Downtown Ferry Terminal to a seaside village of old villas and cafés. Walk up Mt Victoria, a small volcanic cone, for the view back over the harbour and the city. Ferries take contactless cards.', map:'Devonport Wharf Auckland'}
+    {t:'12:35', h:'Lunch near the gorge', dur:'~45 min', p:'Picnic, or a café in Paeroa or Waikino.'},
+    {t:'13:20', h:'Karangahake Windows Walk', s:'free', dur:'~1 hr', p:'Suspension bridges over the river, then old gold mining tunnels with window openings cut into the cliff above the gorge.', f:{Bring:'A torch for the tunnels'}, map:'Karangahake Gorge Historic Walkway car park'},
+    {t:'14:30', h:'Owharoa Falls', s:'free', dur:'~20 min', p:'A few minutes up the road. Short walk from the car to a waterfall tumbling over rock slabs.', map:'Owharoa Falls'},
+    {t:'15:00', h:'Drive to Auckland', dur:'~1 hr 45 min'},
+    {t:'16:45', h:'Check in, Auckland', p:'Somewhere near Britomart or the Viaduct keeps the ferry and the airport bus a short walk away.'}
    ],
    Evening:[
     {t:'18:30', h:'Wynyard Quarter and the Viaduct', s:'free', dur:'Evening', p:'Waterfront walk, boats, plenty of places to eat. Sunset is around 8:25pm. Ponsonby is the other good dinner option, a short bus ride away. First Table is worth checking for an early table in either.', f:{Note:'Vincent heads back to Rotorua after dinner.'}, map:'Wynyard Quarter Auckland'}
@@ -343,6 +349,7 @@ const BOOK = [
  {tier:'Week before', c:'--yellow', items:[
    ['wot','Thu 3 Dec morning tickets','From NZ$47. Vincent to book.'],
    ['redwoods','Fri 4 Dec, 9:00pm','NZ$65. Vincent to book.'],
+   ['tarawera','Tarawera Falls permit, Sat 5 Dec','NZ$10 at Kawerau i-SITE on the morning. Check that week the forest road is open.'],
    ['tide','Check Ōhope tide times for Sat 5 Dec','For the Otarawairere Bay track, which needs lower tide.'],
    ['julians','Check opening hours for Sat 5 Dec, 10:15 stop','Vincent to check.'],
    ['agrodome','Fri 4 Dec 2:30pm tickets','NZ$68 each. Vincent to book.'],
@@ -356,6 +363,8 @@ const BOOK = [
 
 /* ---------- IDEAS ---------- */
 const IDEAS = [
+ {h:'Okere Falls walk', tags:['Free','Nature','Rotorua'], cost:'Free', p:'Easy 30 min riverside track to a lookout where rafters drop over a 7 m waterfall. 20 minutes from town.', map:'Okere Falls Scenic Reserve'},
+ {h:'Devonport and Mt Victoria', tags:['Auckland'], cost:'Ferry by contactless, capped at NZ$20 (~€10) a day', p:'12 min ferry from downtown to a seaside village, then a short climb up a volcanic cone for city views. Good half-day.', map:'Devonport Wharf Auckland'},
  {h:'Mini golf with rabbits', tags:['Rotorua'], cost:'NZ$22 (~€11), deals from NZ$16; night golf NZ$25', p:'18-hole course where big, tame Flemish rabbits hop around and get in the way of your putts. Open 9am to 10pm, rain or shine, so it works as an evening activity too. On Fairy Springs Road, right next to Skyline.', map:'Rotorua Mini Golf 152 Fairy Springs Road'},
  {h:'Hamurana Springs walk', tags:['Nature','Rotorua'], cost:'NZ$18 (~€9), some slots NZ$13', p:'Self-guided walk around the deepest natural spring in the North Island, with crystal-clear blue water, a grove of redwoods, and riverside decks. About 45 minutes to an hour. 15 minutes from town on the north side of the lake. Summer hours 9am to 6pm, last entry 5pm. Sites here are significant to Ngāti Rangiwewehi.', map:'Hamurana Springs'},
  {h:'Waimangu Volcanic Valley', tags:['Geothermal','Rotorua'], cost:'NZ$75 (~€38)', p:'The world\'s youngest geothermal valley, formed by the 1886 Tarawera eruption. A mostly downhill walk past steaming Frying Pan Lake, the bright blue Inferno Crater lake and new silica terraces, down to Lake Rotomahana. Trails run 1.5 to 4 km. Last entry 3:30pm. 25 minutes south of town.', map:'Waimangu Volcanic Valley'},
@@ -405,7 +414,7 @@ function overview(){
     <div class="facts">
       <div><b>5</b><small>nights</small></div>
       <div><b>4 + 1</b><small>Rotorua, Auckland</small></div>
-      <div><b>~900 km</b><small>driving, all with Vincent</small></div>
+      <div><b>~1,000 km</b><small>driving, all with Vincent</small></div>
       <div><b class="num">~NZ$${total}</b><small>planned activities, per person (~€${eur(total)})</small></div>
     </div>
   </section>
@@ -552,10 +561,12 @@ function travel(){
       <tbody>
         <tr><td>Wed 2</td><td>Auckland Airport → Rotorua</td><td class="num">~3 hrs</td></tr>
         <tr><td>Thu 3</td><td>Rotorua → Geothermal → Hobbiton → Rotorua</td><td class="num">~3 hrs total</td></tr>
-        <tr><td>Sat 5</td><td>Rotorua → Whakatāne / Ōhope, via Okere Falls</td><td class="num">~1 hr 15 min each way</td></tr>
+        <tr><td>Sat 5</td><td>Rotorua → Kawerau → Tarawera Falls → Whakatāne / Ōhope</td><td class="num">~2 hrs</td></tr>
+        <tr><td>Sat 5</td><td>Ōhope → Rotorua</td><td class="num">~1 hr 15 min</td></tr>
         <tr><td>Sun 6</td><td>Rotorua → Blue Spring, Putaruru</td><td class="num">~1 hr</td></tr>
         <tr><td>Sun 6</td><td>Putaruru → Matamata</td><td class="num">~30 min</td></tr>
-        <tr><td>Sun 6</td><td>Matamata → Auckland CBD</td><td class="num">~2 hrs</td></tr>
+        <tr><td>Sun 6</td><td>Matamata → Karangahake Gorge</td><td class="num">~1 hr</td></tr>
+        <tr><td>Sun 6</td><td>Karangahake Gorge → Auckland CBD</td><td class="num">~1 hr 45 min</td></tr>
       </tbody>
     </table></div>
   </section>`;
