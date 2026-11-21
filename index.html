@@ -281,8 +281,8 @@ const DAYS = [
     {t:'14:30', h:'Farm', s:'book', dur:'~2 hrs', cost:[68,null,'']}
    ],
    Evening:[
-    {t:'~17:30', h:'First Table dinner on Eat Streat', s:'book', dur:'~1.5 hrs', p:'Early dinner after the luge, with time to rest before the evening. With nothing else on until then, this is the easiest night to grab the earliest sitting.',
-     f:{'First Table':'50% off food for 2, small booking fee, drinks full price. Arrive within 15 min of the booking or the deal is off.'}, map:'Eat Streat Rotorua'},
+    {t:'17:30', h:'Dinner at Number 8 Wire', s:'booked', dur:'~1.5 hrs', p:'Restaurant, café and bar on Tutanekai Street, booked through First Table.',
+     f:{Address:'1139 Tutanekai Street, Rotorua', 'First Table':'50% off the food bill for 2, drinks full price. Arrive within 15 min of 5:30pm or the deal is off.'}, map:'Number 8 Wire Restaurant Rotorua'},
     {t:'21:00', h:'Redwoods', s:'book', dur:'~45 min', cost:[65,null,''], map:'Redwoods Rotorua'}
    ]}},
 
@@ -296,13 +296,13 @@ const DAYS = [
     {t:'11:45', h:'???', dur:'~1.5 hrs'}
    ],
    Afternoon:[
-    {t:'13:30', h:'Ōhope Beach', s:'free', dur:'~2.5 hrs', p:'Around 11 km of white sand with Whakaari / White Island out on the horizon.', map:'Ohope Beach'},
-    {t:'14:30', h:'Otarawairere Bay walk', s:'free', opt:true, dur:'~1 hr return', p:'Bush track over the headland from the west end of Ōhope down to a sheltered cove. Only passable at lower tide, so check the tide times first.', map:'Otarawairere Bay'},
-    {t:'16:30', h:'Drive back to Rotorua', dur:'~1 hr 15 min'}
+    {t:'13:30', h:'Ōhope Beach', s:'free', dur:'~2 hrs', p:'Around 11 km of white sand with Whakaari / White Island out on the horizon.', map:'Ohope Beach'},
+    {t:'14:15', h:'Otarawairere Bay walk', s:'free', opt:true, dur:'~1 hr return', p:'Bush track over the headland from the west end of Ōhope down to a sheltered cove. Only passable at lower tide, so check the tide times first.', map:'Otarawairere Bay'},
+    {t:'15:30', h:'Drive back to Rotorua', dur:'~1 hr 15 min', p:'Leave Ōhope by 3:30 to make the 5pm dinner.'}
    ],
    Evening:[
-    {t:'~18:00', h:'First Table dinner on Eat Streat', s:'book', dur:'~1.5 hrs', p:'Last night in Rotorua. Back from the coast around 5:45, so pick a sitting from 6pm.',
-     f:{'First Table':'50% off food, drinks full price. Arrive within 15 min of the booking.'}, map:'Eat Streat Rotorua'}
+    {t:'17:00', h:'Dinner at Atticus Finch', s:'booked', dur:'~1.5 hrs', p:'Last night in Rotorua. Booked through First Table, a few doors down Tutanekai Street.',
+     f:{Address:'1106 Tutanekai Street, Rotorua', 'First Table':'50% off the food bill for 2, drinks full price. Arrive within 15 min of 5:00pm or the deal is off.'}, map:'Atticus Finch Rotorua'}
    ]}},
 
  {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, the gorge, then the city', base:'Auckland', mode:'car',
@@ -353,7 +353,7 @@ const BOOK = [
    ['tide','Check Ōhope tide times for Sat 5 Dec','For the Otarawairere Bay track, which needs lower tide.'],
    ['julians','Check opening hours for Sat 5 Dec, 10:15 stop','Vincent to check.'],
    ['agrodome','Fri 4 Dec 2:30pm tickets','NZ$68 each. Vincent to book.'],
-   ['firsttable','First Table: Eat Streat dinners Fri 4 and Sat 5 Dec','Tables open at midday, 14 days ahead (from about 20 Nov). Early sittings go fast.'],
+   ['firsttable','First Table dinners: Number 8 Wire Fri 4 Dec 5:30pm, Atticus Finch Sat 5 Dec 5:00pm','Booked.', true],
    ['nztd','NZ Traveller Declaration','Online, within 24 hours before the Sydney flight.']]},
  {tier:'On the day', c:'--green', items:[
    ['skyline','Skyline gondola + luge','Buy at the base.'],
