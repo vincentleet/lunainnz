@@ -263,7 +263,7 @@ const DAYS = [
   parts:{
    Morning:[
     {t:'09:15', h:'Drive south', dur:'~30 min'},
-    {t:'09:45', h:'Geothermal', s:'book', dur:'~3 hrs', cost:[47,null,'']}
+    {t:'09:45', h:'Geothermal', s:'walk', dur:'~3 hrs', cost:[47,null,'']}
    ],
    Afternoon:[
     {t:'12:45', h:'Mud pool', s:'free', dur:'15 min', p:'Two minutes down the road. A big pool of grey mud plopping and burping. Free, roadside.', map:'Waiotapu Mud Pools'},
@@ -352,24 +352,23 @@ const DAYS = [
 /* ---------- BOOKINGS ---------- */
 const BOOK = [
  {tier:'Do now', c:'--red', items:[
-   ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports. Apply on the official NZeTA app or immigration.govt.nz. The levy is NZ$100 on top of the NZeTA fee. Allow 72 hours.', true],
+   ['redwoods','Fri 4 Dec, 9:00pm','NZ$65. Timed slots only, busy on summer evenings. Non-refundable, so check the forecast first.'],
+   ['nzeta','NZeTA and visitor levy','Required before flying in on most European passports.', true],
    ['stay-rot','Rotorua accommodation, 2 to 6 Dec','4 nights. Booked.', true],
    ['stay-akl','Auckland hotel, 6 to 7 Dec','1 night. Booked.', true],
-   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.', true]]},
- {tier:'Week before', c:'--yellow', items:[
-   ['wot','Thu 3 Dec morning tickets','From NZ$47. Vincent to book.'],
-   ['redwoods','Fri 4 Dec, 9:00pm','NZ$65. Book now: timed slots, busy in summer.'],
-   ['tarawera','Tarawera Falls permit, Sat 5 Dec','NZ$10 at Kawerau i-SITE on the morning. Check that week the forest road is open.'],
-   ['julians','Check opening hours for Sat 5 Dec, 11:45 stop','Open 9am to 4:30pm daily. Fits.', true],
-   ['firsttable','First Table dinners: Number 8 Wire Fri 4 Dec 5:30pm, Atticus Finch Sat 5 Dec 5:00pm','Booked.', true],
-   ['nztd','NZ Traveller Declaration','Online, within 24 hours before the Sydney flight.']]},
+   ['hobbiton','Hobbiton Signature Tour, Thu 3 Dec 4:00pm','Booked.', true],
+   ['firsttable','First Table dinners: Number 8 Wire Fri 4 Dec 5:30pm, Atticus Finch Sat 5 Dec 5:00pm','Booked.', true]]},
+ {tier:'Before the trip', c:'--yellow', items:[
+   ['nztd','NZ Traveller Declaration','Luna. Online, within 24 hours before the Sydney flight.'],
+   ['tarawera-road','Call Kawerau i-SITE on Fri 4 Dec','Check the forest road to Tarawera Falls is open. 07 323 6300.'],
+   ['julians','Check opening hours for Sat 5 Dec, 11:45 stop','Open 9am to 4:30pm daily. Fits.', true]]},
  {tier:'On the day', c:'--green', items:[
+   ['wot','Thu 3 Dec morning tickets','From NZ$47. Pay at the gate (card only), or book online the night before.'],
    ['agrodome','Fri 4 Dec 2:30pm tickets','NZ$49 each. Buy at reception, or online the day before.'],
-   ['skyline','Skyline gondola + luge','Buy at the base.'],
-   ['ferry','Devonport ferry','Contactless at the Downtown Ferry Terminal.'],
+   ['skyline','Skyline gondola + luge','Buy at the base. Runs in rain, pauses in heavy rain or wind.'],
+   ['tarawera','Tarawera Falls permit, Sat 5 Dec','NZ$10 at Kawerau i-SITE, from 9am. Only sold on the day.'],
    ['checkin','Check in online for AA82','Opens 24 hours before.']]}
 ];
-
 /* ---------- IDEAS ---------- */
 const IDEAS = [
  {h:'Okere Falls walk', tags:['Free','Nature','Rotorua'], cost:'Free', p:'Easy 30 min riverside track to a lookout where rafters drop over a 7 m waterfall. 20 minutes from town.', map:'Okere Falls Scenic Reserve'},
