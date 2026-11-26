@@ -234,7 +234,7 @@ const badge = s => s ? `<span class="badge ${STATUS[s][0]}">${s==='booked'?'✓ 
 
 /* ---------- DAYS ---------- */
 const DAYS = [
- {n:1, date:'Wed 2 Dec', short:'Arrive', title:'Touchdown and the drive south', base:'Rotorua', mode:'car', wx:{sky:'Drizzle likely', hi:16, lo:8, rain:45},
+ {n:1, date:'Wed 2 Dec', short:'Arrive', title:'Touchdown and the drive south', base:'Rotorua', mode:'car', wx:{sky:'Plenty of sunshine', hi:19, lo:12, rain:1},
   parts:{
    Afternoon:[
     {t:'14:05', h:'Land in Auckland', s:'booked', dur:'QF143 from Sydney',
@@ -250,7 +250,7 @@ const DAYS = [
      f:{Start:'Redwoods i-SITE car park, Long Mile Rd', Bring:'Comfortable shoes'}, map:'Redwoods Whakarewarewa Forest Visitor Centre'}
    ]}},
 
- {n:2, date:'Thu 3 Dec', short:'Shire + market', title:'Geothermal, the Shire and the night market', base:'Rotorua', mode:'car', wx:{sky:'Partly cloudy', hi:20, lo:9, rain:5},
+ {n:2, date:'Thu 3 Dec', short:'Shire + market', title:'Geothermal, the Shire and the night market', base:'Rotorua', mode:'car', wx:{sky:'Sunshine', hi:19, lo:12, rain:2},
   parts:{
    Morning:[
     {t:'09:15', h:'Drive south', dur:'~30 min'},
@@ -269,7 +269,7 @@ const DAYS = [
     {t:'19:30', h:'Rotorua Night Market', s:'free', dur:'Until 9pm', p:'Thursday nights only, so this is the one shot. Food trucks and stalls in the middle of Tutanekai Street. Dinner sorted.', f:{Note:'Weather permitting'}, map:'Tutanekai Street Rotorua'}
    ]}},
 
- {n:3, date:'Fri 4 Dec', short:'Gardens + luge', title:'Gardens, the luge and the farm', base:'Rotorua', mode:'car', wx:{place:'Rotorua'},
+ {n:3, date:'Fri 4 Dec', short:'Gardens + luge', title:'Gardens, the luge and the farm', base:'Rotorua', mode:'car', wx:{sky:'Mostly cloudy', hi:21, lo:13, rain:25},
   parts:{
    Morning:[
     {t:'09:00', h:'Government Gardens', s:'free', dur:'~2 hrs', p:'A slow walk through the middle of Rotorua, all free and all flat. Start in front of the Tudor-style bath house in Government Gardens, wander past the croquet and bowling greens, then follow the lakeside boardwalk out to Sulphur Point, where the water steams and turns milky white among the black swans. Loop back along the lakefront and grab a coffee on Eat Streat.',
@@ -289,7 +289,7 @@ const DAYS = [
      f:{Address:'1139 Tutanekai Street, Rotorua', 'First Table':'50% off the food bill for 2, drinks full price. Arrive within 15 min of 5:30pm or the deal is off.'}, map:'Number 8 Wire Restaurant Rotorua'}
    ]}},
 
- {n:4, date:'Sat 5 Dec', short:'Bay of Plenty', title:'A waterfall, a mystery and Ōhope Beach', base:'Rotorua', mode:'car', wx:{place:'Rotorua'},
+ {n:4, date:'Sat 5 Dec', short:'Bay of Plenty', title:'A waterfall, a mystery and Ōhope Beach', base:'Rotorua', mode:'car', wx:{sky:'Rain tapering off', hi:23, lo:11, rain:69},
   parts:{
    Morning:[
     {t:'08:10', h:'Leave Rotorua for Kawerau', dur:'~50 min'},
@@ -308,7 +308,7 @@ const DAYS = [
     {t:'21:00', h:'Redwoods', s:'book', dur:'~45 min', cost:[65,null,''], map:'Redwoods Rotorua'}
    ]}},
 
- {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, the gorge, then the city', base:'Auckland', mode:'car', wx:{place:'Auckland'},
+ {n:5, date:'Sun 6 Dec', short:'To Auckland', title:'Blue Spring, the gorge, then the city', base:'Auckland', mode:'car', wx:{sky:'Morning rain, then mostly cloudy (Auckland)', hi:23, lo:17, rain:55},
   parts:{
    Morning:[
     {t:'08:30', h:'Check out and head north', dur:'~1 hr to Putaruru'},
@@ -328,7 +328,7 @@ const DAYS = [
     {t:'18:30', h:'Wynyard Quarter and the Viaduct', s:'free', dur:'Evening', p:'Waterfront walk, boats, plenty of places to eat. Sunset is around 8:25pm. Ponsonby is the other good dinner option, a short bus ride away. First Table is worth checking for an early table in either.', f:{Note:'Vincent heads back to Rotorua after dinner.'}, map:'Wynyard Quarter Auckland'}
    ]}},
 
- {n:6, date:'Mon 7 Dec', short:'Depart', title:'Slow morning, then LA', base:'Flying out', mode:'solo', wx:{place:'Auckland'},
+ {n:6, date:'Mon 7 Dec', short:'Depart', title:'Slow morning, then LA', base:'Flying out', mode:'solo', wx:{sky:'Sun and cloud (Auckland)', hi:24, lo:17, rain:0},
   parts:{
    Morning:[
     {t:'09:00', h:'Breakfast and a last wander', s:'free', p:'Commercial Bay and Britomart are right by most CBD hotels. Pick up anything you forgot to buy.', map:'Commercial Bay Auckland'},
@@ -404,7 +404,7 @@ function planned(){
   return t;
 }
 
-const WX_ASOF = '26 Nov';
+const WX_ASOF = 'AccuWeather, 26 Nov';
 const TYPICAL = {Rotorua:'Typically about 21° by day, 10° at night', Auckland:'Typically about 22° by day, 15° at night'};
 function wxText(d){
   const w=d.wx||{};
@@ -413,7 +413,7 @@ function wxText(d){
 }
 function wxHtml(d){
   const w=d.wx||{};
-  return `<span class="wx ${w.sky?'':'wx-typ'}">${wxText(d)}${w.sky?` <small>(forecast as of ${WX_ASOF})</small>`:''}</span>`;
+  return `<span class="wx ${w.sky?'':'wx-typ'}">${wxText(d)}${w.sky?` <small>(${WX_ASOF})</small>`:''}</span>`;
 }
 function overview(){
   const total = planned();
